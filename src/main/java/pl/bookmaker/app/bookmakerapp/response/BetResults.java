@@ -7,8 +7,8 @@ import java.util.List;
 
 @Value
 @Builder
-public class BetResult {
+public class BetResults {
     
-    List<BetBookMakerResult> amounts;
+    List<BetBookmakerResult> amounts;
     
 }

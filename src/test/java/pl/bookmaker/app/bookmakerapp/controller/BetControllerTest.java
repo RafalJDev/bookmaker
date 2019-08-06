@@ -8,6 +8,8 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import pl.bookmaker.app.bookmakerapp.handler.BetHandler;
+import pl.bookmaker.app.bookmakerapp.price.FinalPriceCalculator;
+import pl.bookmaker.app.bookmakerapp.result.ResultCalculator;
 
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.springframework.http.MediaType.APPLICATION_JSON;
@@ -26,11 +28,15 @@ public class BetControllerTest {
     @MockBean
     BetHandler betHandler;
     
+    @MockBean
+    ResultCalculator resultCalculator;
+    
+    @MockBean
+    FinalPriceCalculator priceCalculator;
+    
     @Test
     public void firstTest() throws Exception {
-        this.mockMvc.perform(post("/bet").content("{ \"win\":\"100\"," +
-                                                      "\"placee\":\"100\", " +
-                                                      "\"show\":\"100\"}")
+        this.mockMvc.perform(post("/bet").content("{ \"WIN\":\"100\"," + "\"PLACE\":\"100\", " + "\"SHOW\":\"100\"}")
                                          .contentType(APPLICATION_JSON))
                     .andDo(print())
                     .andExpect(status().isOk())

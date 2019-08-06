@@ -7,9 +7,9 @@ import java.math.BigDecimal;
 
 @Value
 @Builder
-public class BetBookMakerResult {
+public class BetBookmakerResult {
     
     String bookmakerName;
-    BigDecimal amount;
+    BigDecimal finalResult;
     
 }

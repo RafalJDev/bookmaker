@@ -6,9 +6,9 @@ import java.math.BigDecimal;
 import java.util.Map;
 
 @Value
-public class BookmakerToBets {
+public class BookmakerWithBets {
     
-    String bookmakerName;
-    Map<String, BigDecimal> map;
+    BookmakerNames bookmakerName;
+    Map<BetTypes, BigDecimal> betToAmountMap;
     
 }

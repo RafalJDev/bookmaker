@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import pl.bookmaker.app.bookmakerapp.handler.BetHandler;
 import pl.bookmaker.app.bookmakerapp.request.BetToAmountJsonMap;
-import pl.bookmaker.app.bookmakerapp.response.BetResult;
+import pl.bookmaker.app.bookmakerapp.response.BetResults;
 
 @RestController
 @RequiredArgsConstructor
@@ -15,7 +15,7 @@ class BetController {
     private final BetHandler handler;
     
     @PostMapping("bet")
-    BetResult betEndpoint(@RequestBody BetToAmountJsonMap jsonMap) {
+    BetResults betEndpoint(@RequestBody BetToAmountJsonMap jsonMap) {
         return handler.handle(jsonMap);
     }
 }

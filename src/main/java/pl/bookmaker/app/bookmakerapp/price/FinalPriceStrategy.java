@@ -1,18 +1,20 @@
 package pl.bookmaker.app.bookmakerapp.price;
 
+import pl.bookmaker.app.bookmakerapp.pojo.BetTypes;
+
 import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.function.Function;
 
 abstract class FinalPriceStrategy {
     
-    protected final HashMap<String, Function<BigDecimal, BigDecimal>> betTypeToFunctionMap;
+    final HashMap<BetTypes, Function<BigDecimal, BigDecimal>> betTypeToFunctionMap;
     
-    protected FinalPriceStrategy() {
+    FinalPriceStrategy() {
         this.betTypeToFunctionMap = new HashMap<>();
     }
     
-    public BigDecimal calculatePrice(String betType, BigDecimal bet) {
+    public BigDecimal calculatePrice(BetTypes betType, BigDecimal bet) {
         return betTypeToFunctionMap.getOrDefault(betType, bigDecimal -> new BigDecimal("0"))
                                    .apply(bet);
     }
